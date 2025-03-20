@@ -12,6 +12,8 @@ import { Button } from '@/components/ui/button';
 
 const getRecipes = async () => {
   const result = await fetch('http://localhost:4000/recipes');
+
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   return result.json();
 };
 
@@ -39,7 +41,7 @@ export default async function Home() {
               <p>{item.description}</p>
             </CardContent>
             <CardFooter className='flex justify-between'>
-              <Button>view recipe </Button>
+              <Button className='cursor-pointer'>view recipe </Button>
               {item.vegan && <Badge variant='secondary'>vegan</Badge>}
             </CardFooter>
           </Card>
